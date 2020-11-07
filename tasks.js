@@ -48,14 +48,9 @@ const buildDev = () => esbuild.buildSync(getEsbuildOptions('development'))
 
 const buildProd = () => esbuild.buildSync(getEsbuildOptions('production'))
 
-const clearPublicDir = async () => {
-    await run('rm', ['-rf', 'public/*'])
-    await run('rm', ['-rf', 'public/.git'])
-}
-
 const deploy = async () => {
     const cwd = 'public'
-    await clearPublicDir()
+    await run('rm', ['-rf', 'public'])
     await run('git', ['clone', '-b', 'gh-pages', 'git@github.com:bkotos/contact-tracer.git', 'public'])
 
     await clean()
