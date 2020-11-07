@@ -1,7 +1,7 @@
 public/dist
 public/vendor
+public/LICENSE
 dist
 .cache
 .idea
 node_modules
-
