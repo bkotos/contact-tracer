@@ -1,0 +1,7 @@
+public/dist
+public/vendor
+dist
+.cache
+.idea
+node_modules
+
