@@ -1,6 +1,6 @@
 export enum PersonType {
-    patient = 'Patient',
-    contact = 'Contact'
+    patient = 'COVID Case',
+    contact = 'COVID Contact'
 }
 
 export interface Interview {
