@@ -49,8 +49,8 @@ const buildDev = () => esbuild.buildSync(getEsbuildOptions('development'))
 const buildProd = () => esbuild.buildSync(getEsbuildOptions('production'))
 
 const deploy = async () => {
-    const cwd = 'dist'
-    await run('rm', ['-rf', 'dist/*'])
+    const cwd = 'public'
+    await run('rm', ['-rf', 'public/*'])
     await run('git', ['init'], { cwd })
     await run(
         'git',
