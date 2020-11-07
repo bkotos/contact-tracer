@@ -25,7 +25,7 @@ const copy = async () => {
 }
 
 const clean = async () =>
-    await run('rm', ['-rf', 'public/vendor', 'public/dist', 'public/.git', 'public/LICENSE'])
+    await run('rm', ['-rf', 'public/vendor', 'public/dist', 'public/LICENSE'])
 
 const serve = async (stdio = 'inherit') => await run('serve', ['public'], {stdio})
 
@@ -56,20 +56,9 @@ const clearPublicDir = async () => {
 const deploy = async () => {
     const cwd = 'public'
     await clearPublicDir()
-    await run('git', ['init'], { cwd })
-    await run(
-        'git',
-        [
-            'remote',
-            'add',
-            'origin',
-            'git@github.com:bkotos/contact-tracer.git'
-        ],
-        { cwd }
-    )
-    await run('git', ['fetch', 'origin'], { cwd })
-    await run('git', ['checkout', '-tb', 'gh-pages', 'origin/gh-pages'], { cwd })
+    await run('git', ['clone', '-b', 'gh-pages', 'git@github.com:bkotos/contact-tracer.git', 'public'])
 
+    await clean()
     await copy()
     buildProd()
 
