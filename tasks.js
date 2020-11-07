@@ -48,10 +48,14 @@ const buildDev = () => esbuild.buildSync(getEsbuildOptions('development'))
 
 const buildProd = () => esbuild.buildSync(getEsbuildOptions('production'))
 
+const clearPublicDir = async () => {
+    await run('rm', ['-rf', 'public/*'])
+    await run('rm', ['-rf', 'public/.git'])
+}
+
 const deploy = async () => {
     const cwd = 'public'
-    await run('rm', ['-rf', 'public/*'])
-    await run('rm', ['-rf', '.git'], { cwd })
+    await clearPublicDir()
     await run('git', ['init'], { cwd })
     await run(
         'git',
@@ -74,7 +78,7 @@ const deploy = async () => {
     await run('git', ['status'], { cwd })
     await run('git', ['commit', '-m', 'deploy'], { cwd })
     await run('git', ['push', 'origin', 'gh-pages'], { cwd })
-    // await run('rm', ['-rf', '.git'], { cwd })
+    await run('rm', ['-rf', '.git'], { cwd })
 }
 
 const watch = async(stdio = 'inherit') =>
