@@ -50,6 +50,7 @@ const buildProd = () => esbuild.buildSync(getEsbuildOptions('production'))
 
 const deploy = async () => {
     const cwd = 'dist'
+    await run('rm', ['-rf', 'dist/*'])
     await run('git', ['init'], { cwd })
     await run(
         'git',
@@ -64,7 +65,6 @@ const deploy = async () => {
     await run('git', ['fetch', 'origin'], { cwd })
     await run('git', ['checkout', '-tb', 'gh-pages', 'origin/gh-pages'], { cwd })
 
-    await clean()
     await copy()
     buildProd()
 
