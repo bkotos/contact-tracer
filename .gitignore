@@ -1,6 +1,7 @@
 public/dist
 public/vendor
 public/LICENSE
+public/CNAME
 dist
 .cache
 .idea

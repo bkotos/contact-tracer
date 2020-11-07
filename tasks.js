@@ -51,6 +51,7 @@ const buildProd = () => esbuild.buildSync(getEsbuildOptions('production'))
 const deploy = async () => {
     const cwd = 'public'
     await run('rm', ['-rf', 'public/*'])
+    await run('rm', ['-rf', '.git'], { cwd })
     await run('git', ['init'], { cwd })
     await run(
         'git',
@@ -73,7 +74,7 @@ const deploy = async () => {
     await run('git', ['status'], { cwd })
     await run('git', ['commit', '-m', 'deploy'], { cwd })
     await run('git', ['push', 'origin', 'gh-pages'], { cwd })
-    await run('rm', ['-rf', '.git'], { cwd })
+    // await run('rm', ['-rf', '.git'], { cwd })
 }
 
 const watch = async(stdio = 'inherit') =>
