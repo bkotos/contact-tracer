@@ -7,6 +7,7 @@
     "start": "node tasks.js clean build:dev copy; run-p watch server:start",
     "watch": "chokidar \"src/**/*.ts\" \"src/**/*.tsx\" -c \"node tasks.js build:dev\"",
     "build:dev": "node tasks.js build:dev",
+    "deploy": "node tasks.js deploy",
     "server:start": "node tasks.js serve",
     "copy": "node tasks.js copy",
     "test": "echo \"Error: no test specified\" && exit 1"
