@@ -21,11 +21,11 @@ const copy = async () => {
     await copyRecursive('node_modules/@blueprintjs/icons/resources/icons/', 'public/vendor/blueprintjs/icons/resources/icons/')
     await copyRecursive('node_modules/@blueprintjs/core/lib/css/', 'public/vendor/blueprintjs/core/lib/css/')
     await copyRecursive('node_modules/@blueprintjs/datetime/lib/css/', 'public/vendor/blueprintjs/datetime/lib/css/')
-    await run('cp', 'LICENSE', 'public/LICENSE')
+    await run('cp', ['LICENSE', 'public/LICENSE'])
 }
 
 const clean = async () =>
-    await run('rm', ['-rf', 'public/vendor', 'public/dist'])
+    await run('rm', ['-rf', 'public/vendor', 'public/dist', 'public/.git', 'public/LICENSE'])
 
 const serve = async (stdio = 'inherit') => await run('serve', ['public'], {stdio})
 
