@@ -50,11 +50,13 @@ const buildProd = () => esbuild.buildSync(getEsbuildOptions('production'))
 
 const deploy = async () => {
     const cwd = 'public'
+    await run('cp', ['public/index.html', 'index.html'])
     await run('rm', ['-rf', 'public'])
     await run('git', ['clone', '-b', 'gh-pages', 'git@github.com:bkotos/contact-tracer.git', 'public'])
 
     await clean()
     await copy()
+    await run('cp', ['index.html', 'public/index.html'])
     buildProd()
 
     await run('git', ['status'], { cwd })
