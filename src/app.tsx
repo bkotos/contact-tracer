@@ -47,14 +47,6 @@ const SpacedCard = styled(Card)`
     margin-bottom: 2rem;
 `
 
-const Attribution = styled.p`
-    margin: 1rem;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-size: 9pt;
-`
-
 const DEFAULT_PERSON_TYPE = PersonType.patient
 
 const APP_TITLE = 'COVID Isolation/Quarantine Calculator'
@@ -173,9 +165,6 @@ export default () => {
                         </SpacedCard>
                     </>
                 }
-                <Attribution>
-                    Created by <a href='https://kotos.io' target='_blank'>Brian Kotos</a>
-                </Attribution>
             </Container>
         </>
     )
