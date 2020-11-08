@@ -34,6 +34,9 @@ const Column = styled.div`
     flex-basis: 100%;
     flex: 1;
     padding: 0 1rem;
+    @media (max-width: 568px) {
+        flex-basis: 100%;
+    }
 `
 
 const FullWidthFormGroup = styled(FormGroup)`
@@ -45,6 +48,16 @@ const FullWidthFormGroup = styled(FormGroup)`
 
 const SpacedCard = styled(Card)`
     margin-bottom: 2rem;
+`
+
+const MobileFriendlyDateRangePicker = styled(DateRangePicker)`
+    @media (max-width: 568px) {
+        margin-left: -2rem;
+        & > div {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
 `
 
 const DEFAULT_PERSON_TYPE = PersonType.patient
@@ -147,7 +160,7 @@ export default () => {
                             </Row>
                             <Row>
                                 <Column>
-                                    <DateRangePicker
+                                    <MobileFriendlyDateRangePicker
                                         shortcuts={false}
                                         value={[ startDate, endDate ]}
                                     />
