@@ -57,7 +57,7 @@ const Attribution = styled.p`
 
 const DEFAULT_PERSON_TYPE = PersonType.patient
 
-const APP_TITLE = 'COVID Quarantine/Isolation Calculator'
+const APP_TITLE = 'COVID Isolation/Quarantine Calculator'
 
 export default () => {
     const [personType, setPersonType] = useState<PersonType>(DEFAULT_PERSON_TYPE)
@@ -92,11 +92,6 @@ export default () => {
 
     return (
         <>
-            <Navbar fixedToTop>
-                <NavbarGroup align={Alignment.LEFT}>
-                    <Button className={Classes.MINIMAL} text='File' />
-                </NavbarGroup>
-            </Navbar>
             <Container>
                 <h1>{APP_TITLE}</h1>
                 <SpacedCard>
@@ -118,7 +113,7 @@ export default () => {
                         </Column>
                         <Column>
                             <FullWidthFormGroup
-                                label={`${getStartDateNameForPersonType(personType)} Date`}
+                                label={getStartDateNameForPersonType(personType)}
                             >
                                 <DateInput
                                     formatDate={() => formattedStartDate}
